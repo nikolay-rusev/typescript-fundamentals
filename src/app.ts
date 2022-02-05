@@ -5,6 +5,13 @@ interface GenerateConfig {
     length: number;
 }
 
+// generics and type parameters
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+identity<string>('James');
+
 // function overload
 // signature
 function generateRandomId(symbol: ValidSymbol, length: number): string;
