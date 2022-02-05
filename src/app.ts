@@ -1,17 +1,22 @@
 type ValidSymbol = '$' | '#';
 
-const symbol: ValidSymbol = '#';
-var length: number = 7;
+interface GenerateConfig {
+    symbol: ValidSymbol;
+    length: number;
+}
 
-function generateRandomId(symbol: ValidSymbol, length: number = 7): string {
-    return symbol + Math.random().toString(36).substring(2, length);
+function generateRandomId(optionsOrSymbol: GenerateConfig): string {
+    return (
+        optionsOrSymbol.symbol +
+        Math.random().toString(36).substring(2, optionsOrSymbol.length)
+    );
 }
 
 function main() {
     let app = document.getElementById('app');
     setInterval(() => {
         if (app) {
-            app.innerHTML = generateRandomId('#', 7);
+            app.innerHTML = generateRandomId({symbol: '#', length: 7});
         }
     }, 1000);
 }
